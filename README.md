@@ -13,13 +13,7 @@ Works with **Claude Code**, **Cursor**, **Codex**, and **Antigravity**.
 Each stage is approved before the next one begins:
 
 ```text
-grill-with-docs
-      |
-      v
-to-spec -> to-tickets -> implement -> code-review
-                                      |
-                                      v
-                    e2e-tests -> update-docs -> pr
+grill-with-docs -> to-spec -> to-tickets -> implement -> code-review -> e2e-tests -> update-docs -> pr
 ```
 
 Run `sdlc-next` at any time to see which step comes next.
