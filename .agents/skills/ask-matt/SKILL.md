@@ -86,6 +86,9 @@ Off the main flow entirely.
 - **`/prototype`** is a small, throwaway program that answers one design question: does this state model feel right, or what should this UI look like. Throwaway is a constraint on how the code is written, not a promise to destroy it: the answer folds into the real code, and the prototype itself is kept as a **primary source** on a `prototype/<name>` branch out of main, pointed at from the implementation issue. It's the detour in step 2 of the main flow, but reach for it any time a design question is hard to settle on paper.
 - **`/research`**: delegate reading legwork to a **background agent**: it investigates a question against **primary sources**, then leaves a cited Markdown file in the repo. Keep working while it reads. The file it produces is something to take *into* the main flow at `/grill-with-docs`, since research feeds the thinking rather than replacing it.
 - **`/writing-for-agents`** is the reference for writing documents agents consume: skills, AGENTS.md, pointed-at docs.
+- **`/e2e-tests`** writes and runs end-to-end tests from the spec's acceptance criteria, after you approve its test plan.
+- **`/update-docs`** updates README, docs and ADRs from the branch's changes, after you approve the edits.
+- **`/sdlc-next`** tells you which step to run next, based on what exists. It recommends; it doesn't run anything.
 
 ## Precondition
 
