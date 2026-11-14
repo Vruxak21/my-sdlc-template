@@ -1,36 +1,73 @@
-# SDLC skills template
+# SDLC Skills Template
 
-A project template with Matt Pocock's engineering skills (MIT, https://github.com/mattpocock/skills),
-trimmed to 23 skills, plus three custom ones: update-docs, e2e-tests, sdlc-next.
-Works with Claude Code, Cursor, Codex and Antigravity.
+> A ready-to-use project template for structured, approval-driven software delivery.
 
-## Flow (you approve each stage)
-grill-with-docs -> to-spec -> to-tickets -> implement -> code-review -> e2e-tests -> update-docs -> pr
-Run sdlc-next any time to see which step comes next.
+Built on [Matt Pocock's engineering skills](https://github.com/mattpocock/skills), this
+template includes 23 trimmed upstream skills plus three custom skills:
+`update-docs`, `e2e-tests`, and `sdlc-next`.
 
-## Layout
-- .agents/skills/  real skill files (Cursor, Codex, Antigravity read this)
-- .claude/skills/  symlinks to .agents/skills (Claude Code reads this)
-- AGENTS.md        workflow rules; CLAUDE.md imports it for Claude Code
-- CODING_STANDARDS.md  fill this in per project; code-review checks it
-- skills-lock.json upstream source and hashes for the 23 upstream skills
+Works with **Claude Code**, **Cursor**, **Codex**, and **Antigravity**.
 
-## Use it
-New project: click "Use this template" on GitHub, or run
-  gh repo create my-app --template Vruxak21/my-sdlc-template
-Existing project: from this repo's folder run
-  rsync -a .agents .claude skills-lock.json /path/to/project/
-  rsync -a --ignore-existing AGENTS.md CLAUDE.md CODING_STANDARDS.md /path/to/project/
-(use rsync, not cp, so the symlinks stay links)
+## Workflow
 
-Then, once per project: run the setup-matt-pocock-skills skill (choose your issue tracker)
-and fill in CODING_STANDARDS.md.
+Each stage is approved before the next one begins:
+
+```text
+grill-with-docs
+      |
+      v
+to-spec -> to-tickets -> implement -> code-review
+                                      |
+                                      v
+                    e2e-tests -> update-docs -> pr
+```
+
+Run `sdlc-next` at any time to see which step comes next.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| `.agents/skills/` | Real skill files read by Cursor, Codex, and Antigravity |
+| `.claude/skills/` | Symlinks to `.agents/skills/` for Claude Code |
+| `AGENTS.md` | Workflow rules; `CLAUDE.md` imports this for Claude Code |
+| `CODING_STANDARDS.md` | Project-specific standards checked during code review |
+| `skills-lock.json` | Upstream source references and hashes for the 23 upstream skills |
+
+## Get started
+
+### Create a new project
+
+Use the **Use this template** button on GitHub, or run:
+
+```bash
+gh repo create my-app --template Vruxak21/my-sdlc-template
+```
+
+### Add the template to an existing project
+
+From this repository's folder, run:
+
+```bash
+rsync -a .agents .claude skills-lock.json /path/to/project/
+rsync -a --ignore-existing AGENTS.md CLAUDE.md CODING_STANDARDS.md /path/to/project/
+```
+
+> Use `rsync`, not `cp`, so the symlinks remain links.
+
+Then, once per project:
+
+1. Run the `setup-matt-pocock-skills` skill and choose your issue tracker.
+2. Fill in `CODING_STANDARDS.md`.
 
 ## Notes
-- Upstream skills are unmodified. Put workflow rules in AGENTS.md rather than editing them.
-- Do not run `npx skills update` here without checking: it can overwrite local edits.
-- Skills are invoked as /name in Claude Code and $name in Codex.
-- Needs a git setup that supports symlinks (macOS/Linux; Windows needs symlink support enabled).
+
+- Upstream skills are unmodified. Put workflow rules in `AGENTS.md` instead of editing them.
+- Do not run `npx skills update` without checking first; it can overwrite local edits.
+- Skills are invoked as `/name` in Claude Code and `$name` in Codex.
+- Git must support symlinks: macOS and Linux do by default; Windows requires symlink support to be enabled.
 
 ## License
-Upstream skills: MIT, see LICENSE-mattpocock-skills. Custom skills and rules in this repo are yours to license.
+
+Upstream skills are MIT licensed; see [`LICENSE-mattpocock-skills`](LICENSE-mattpocock-skills).
+Custom skills and rules in this repository are yours to license.
